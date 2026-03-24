@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VINZ STORE - Panel Pterodactyl & Jasa Run SC</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 102, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 102, 0, 0.1) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .shape1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(45deg, #ff0066, #ff6600);
+            top: -300px;
+            left: -300px;
+            animation-delay: 0s;
+        }
+        
+        .shape2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, #00ffcc, #0066ff);
+            bottom: -200px;
+            right: -200px;
+            animation-delay: 5s;
+        }
+        
+        .shape3 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #ffff00, #ff00ff);
+            top: 50%;
+            right: 10%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 50px) rotate(90deg); }
+            50% { transform: translate(0, 100px) rotate(180deg); }
+            75% { transform: translate(-50px, 50px) rotate(270deg); }
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            transition: all 0.5s ease;
+        }
+        
+        header.scrolled {
+            border-bottom: 2px solid #ff0066;
+            box-shadow: 0 5px 30px rgba(255, 0, 102, 0.3);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ff0066, #ff6600, #ffff00, #00ffcc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 0, 102, 0.5);
+            letter-spacing: 3px;
+            position: relative;
+            animation: glow 3s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 0, 102, 0.5), 0 0 20px rgba(255, 0, 102, 0.3); }
+            to { text-shadow: 0 0 30px rgba(255, 0, 102, 0.8), 0 0 40px rgba(255, 102, 0, 0.6); }
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .nav-link:hover {
+            color: #ff0066;
+            transform: translateY(-3px);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff0066, #ff6600);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 50px 0;
+            background: radial-gradient(circle at center, rgba(10, 0, 20, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://files.catbox.moe/c19f5e.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: -1;
+            filter: brightness(0.8);
+        }
+        
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            text-align: center;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #ff0066, #ff6600, #ffff00, #00ffcc, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(255, 0, 102, 0.7);
+            animation: rainbow 8s linear infinite;
+            letter-spacing: 5px;
+            position: relative;
+            text-transform: uppercase;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 50px;
+            color: #ff0066;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(255, 0, 102, 0.5);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .cta-btn {
+            padding: 20px 50px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(255, 0, 102, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff0066, #ff6600);
+            color: white;
+            border: 2px solid #ff0066;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #ff0066;
+            border: 2px solid #ff0066;
+            box-shadow: 0 0 20px rgba(255, 0, 102, 0.3);
+        }
+        
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s;
+            z-index: -1;
+        }
+        
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-10px) scale(1.1) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(255, 0, 102, 0.7);
+            letter-spacing: 3px;
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 150px 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(10, 0, 20, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 80px;
+            color: #ff0066;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            position: relative;
+            text-shadow: 0 0 30px rgba(255, 0, 102, 0.5);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, #ff0066, #ff6600, #ffff00, transparent);
+            border-radius: 5px;
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            margin-bottom: 100px;
+        }
+        
+        .product-card {
+            background: rgba(15, 5, 30, 0.8);
+            border-radius: 30px;
+            padding: 50px 40px;
+            text-align: center;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid rgba(255, 0, 102, 0.3);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-20px) scale(1.05) rotate(3deg);
+            box-shadow: 0 40px 80px rgba(255, 0, 102, 0.4);
+            border-color: #ff0066;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff0066, #ff6600, #ffff00);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 2;
+        }
+        
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.8s;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .product-card:hover::after {
+            transform: rotate(45deg) scale(1.5);
+        }
+        
+        .product-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #ff0066, #ff6600, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 102, 0.5));
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        .product-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 0, 102, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .product-desc {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #cccccc;
+            line-height: 1.8;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .product-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ff6600;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
+            background: rgba(255, 102, 0, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 102, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-price::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: rotate(45deg);
+            animation: priceShine 3s infinite;
+        }
+        
+        @keyframes priceShine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        
+        .price-discount {
+            background: #ff0066;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-left: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255, 0, 102, 0.3);
+        }
+        
+        .buy-btn {
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #ff0066, #ff6600);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(255, 0, 102, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .buy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s;
+            z-index: -1;
+        }
+        
+        .buy-btn:hover::before {
+            left: 100%;
+        }
+        
+        .buy-btn:hover {
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 20px 50px rgba(255, 0, 102, 0.7);
+            letter-spacing: 3px;
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 150px 0;
+            background: linear-gradient(180deg, rgba(10, 0, 20, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+            position: relative;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .feature-card {
+            background: rgba(15, 5, 30, 0.7);
+            padding: 50px 40px;
+            border-radius: 30px;
+            text-align: center;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid rgba(255, 102, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-20px) scale(1.05) rotate(-3deg);
+            border-color: #ff6600;
+            box-shadow: 0 40px 80px rgba(255, 102, 0, 0.4);
+        }
+        
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            color: #ff6600;
+            text-shadow: 0 0 30px rgba(255, 102, 0, 0.5);
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .feature-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .feature-desc {
+            color: #cccccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            padding: 150px 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(10, 0, 20, 0.9) 100%);
+            text-align: center;
+            position: relative;
+        }
+        
+        .testimonial-card {
+            background: rgba(15, 5, 30, 0.8);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            padding: 60px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 0, 102, 0.3);
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: all 0.8s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 40px 80px rgba(255, 0, 102, 0.4);
+            border-color: #ff0066;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 8rem;
+            color: rgba(255, 0, 102, 0.2);
+            line-height: 1;
+            z-index: 1;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .testimonial-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 40px;
+            color: #ffffff;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+            font-family: 'Roboto', sans-serif;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .testimonial-author {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff0066;
+            text-shadow: 0 0 20px rgba(255, 0, 102, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .author-role {
+            color: #cccccc;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 150px 0;
+            background: linear-gradient(180deg, rgba(10, 0, 20, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+            text-align: center;
+            position: relative;
+        }
+        
+        .contact-info {
+            background: rgba(15, 5, 30, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 70px;
+            border-radius: 30px;
+            border: 3px solid #ff0066;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 0, 102, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            animation: contactFloat 20s infinite linear;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes contactFloat {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .contact-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 60px;
+            color: #ff0066;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 40px rgba(255, 0, 102, 0.5);
+        }
+        
+        .contact-method {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 0, 102, 0.1);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 0, 102, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+        .contact-method:hover {
+            transform: scale(1.05);
+            border-color: #ff0066;
+            box-shadow: 0 15px 30px rgba(255, 0, 102, 0.3);
+        }
+        
+        .contact-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff0066;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 0, 102, 0.3);
+            letter-spacing: 2px;
+        }
+        
+        .contact-value {
+            font-size: 1.6rem;
+            color: #ffffff;
+            word-break: break-all;
+            font-weight: 700;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 70px;
+        }
+        
+        .social-link {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff0066, #ff6600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 30px rgba(255, 0, 102, 0.5);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s;
+            z-index: -1;
+        }
+        
+        .social-link:hover::before {
+            left: 100%;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-20px) scale(1.2) rotate(360deg);
+            box-shadow: 0 30px 60px rgba(255, 0, 102, 0.7);
+        }
+        
+        /* Footer */
+        footer {
+            background: #000000;
+            padding: 80px 0 50px;
+            text-align: center;
+            border-top: 5px solid transparent;
+            background-image: linear-gradient(90deg, #ff0066, #ff6600, #ffff00, #00ffcc, #0066ff, #ff0066);
+            background-size: 300% 100%;
+            animation: footerGradient 10s linear infinite;
+        }
+        
+        @keyframes footerGradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ff0066, #ff6600, #ffff00, #00ffcc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            text-shadow: 0 0 40px rgba(255, 0, 102, 0.5);
+            animation: glow 3s infinite alternate;
+            letter-spacing: 3px;
+        }
+        
+        .footer-text {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-weight: 500;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .copyright {
+            color: #999;
+            font-size: 1rem;
+            padding-top: 40px;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+        
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            clip-path: inset(45% 0 0 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            clip-path: inset(15% 0 65% 0);
+            animation: glitch-anim-2 5s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); }
+            60% { transform: translate(5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+        }
+        
+        @keyframes glitch-anim-2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(5px, 5px); }
+            40% { transform: translate(5px, -5px); }
+            60% { transform: translate(-5px, 5px); }
+            80% { transform: translate(-5px, -5px); }
+        }
+        
+        /* Particle Effects */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #ff0066;
+            border-radius: 50%;
+            animation: particle-float 15s infinite linear;
+            opacity: 0.7;
+        }
+        
+        @keyframes particle-float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-menu {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+                letter-spacing: 2px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+                margin-bottom: 30px;
+            }
+            
+            .products-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-card {
+                padding: 40px 30px;
+            }
+            
+            .product-name {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+                margin-bottom: 50px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-btn {
+                width: 100%;
+                max-width: 350px;
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .product-name {
+                font-size: 1.8rem;
+            }
+            
+            .product-price {
+                font-size: 1.8rem;
+            }
+            
+            .buy-btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .contact-title {
+                font-size: 2.5rem;
+            }
+            
+            .social-links {
+                gap: 20px;
+            }
+            
+            .social-link {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-shape shape1"></div>
+        <div class="bg-shape shape2"></div>
+        <div class="bg-shape shape3"></div>
+    </div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo glitch" data-text="VINZ STORE">VINZ STORE</div>
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link">Beranda</a>
+                <a href="#products" class="nav-link">Produk</a>
+                <a href="#features" class="nav-link">Fitur</a>
+                <a href="#testimonials" class="nav-link">Testimoni</a>
+                <a href="#contact" class="nav-link">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="grid-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title floating">VINZ STORE</h1>
+            <p class="hero-subtitle">THE ULTIMATE GAMING SOLUTION</p>
+            <div class="cta-buttons">
+                <a href="#products" class="cta-btn btn-primary pulse-animation">BELI SEKARANG</a>
+                <a href="#contact" class="cta-btn btn-secondary">HUBUNGI ADMIN</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" id="products">
+        <div class="container">
+            <h2 class="section-title">PRODUK PREMIUM</h2>
+            <div class="products-grid">
+                <!-- Product 1: Panel Pterodactyl -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">🖥️</div>
+                    <h3 class="product-name">Panel Pterodactyl</h3>
+                    <p class="product-desc">Panel manajemen server game tercanggih dengan fitur lengkap, performa tinggi, dan stabilitas maksimal untuk kebutuhan gaming Anda.</p>
+                    <div class="product-price">
+                        Rp 5.000<span class="price-discount">START FROM</span>
+                    </div>
+                    <button class="buy-btn" onclick="alert('✅ Panel Pterodactyl berhasil dipesan!\n\nBUY CHAT VINZ YAWW\nSilakan hubungi admin untuk proses pembayaran dan pengiriman.')">
+                        BUY CHAT VINZ YAWW
+                    </button>
+                </div>
+                
+                <!-- Product 2: Jasa Run SC Error No Ref -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">⚡</div>
+                    <h3 class="product-name">Jasa Run SC Error No Ref</h3>
+                    <p class="product-desc">Layanan menjalankan script otomatis dengan sistem error no refund, 24 jam non-stop di server premium kami.</p>
+                    <div class="product-price">
+                        Rp 2.000<span class="price-discount">PER ORDER</span>
+                    </div>
+                    <button class="buy-btn" onclick="alert('✅ Jasa Run SC berhasil dipesan!\n\nBUY CHAT VINZ YAWW\nSilakan hubungi admin untuk konfigurasi dan pembayaran.')">
+                        BUY CHAT VINZ YAWW
+                    </button>
+                </div>
+                
+                <!-- Product 3: NOKOS Luar Negara -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">🌍</div>
+                    <h3 class="product-name">NOKOS Luar Negara</h3>
+                    <p class="product-desc">Aplikasi NOKOS versi internasional dengan server luar negeri, lebih stabil dan anti-banned untuk kebutuhan global.</p>
+                    <div class="product-price">
+                        Rp 10.000<span class="price-discount">PER UNIT</span>
+                    </div>
+                    <button class="buy-btn" onclick="alert('✅ NOKOS Luar Negara berhasil dipesan!\n\nBUY CHAT VINZ YAWW\nSilakan hubungi admin untuk proses pembayaran dan pengiriman.')">
+                        BUY CHAT VINZ YAWW
+                    </button>
+                </div>
+                
+                <!-- Product 4: NOKOS Indo -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">🇮🇩</div>
+                    <h3 class="product-name">NOKOS Indo</h3>
+                    <p class="product-desc">Aplikasi NOKOS versi Indonesia dengan server lokal, lebih cepat dan stabil untuk kebutuhan dalam negeri.</p>
+                    <div class="product-price">
+                        Rp 4.500<span class="price-discount">START FROM</span>
+                    </div>
+                    <button class="buy-btn" onclick="alert('✅ NOKOS Indo berhasil dipesan!\n\nBUY CHAT VINZ YAWW\nSilakan hubungi admin untuk proses pembayaran dan pengiriman.')">
+                        BUY CHAT VINZ YAWW
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title">KEUNGGULAN KAMI</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Keamanan Terjamin</h3>
+                    <p class="feature-desc">Sistem keamanan canggih dengan enkripsi end-to-end untuk melindungi data dan aset digital Anda dari berbagai ancaman.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Performa Tinggi</h3>
+                    <p class="feature-desc">Server premium dengan spesifikasi tinggi dan jaringan internet super cepat untuk pengalaman tanpa lag.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🛠️</div>
+                    <h3 class="feature-title">Support 24/7</h3>
+                    <p class="feature-desc">Tim support profesional siap membantu Anda kapan saja, bahkan di hari libur sekalipun.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">Update Otomatis</h3>
+                    <p class="feature-desc">Dapatkan update terbaru secara otomatis tanpa perlu repot upgrade manual atau khawatir ketinggalan fitur.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">TESTIMONI PELANGGAN</h2>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Panel Pterodactyl dari VINZ STORE benar-benar luar biasa! Harganya cuma 5rb tapi fiturnya komplit banget. Adminnya juga responsif dan selalu online!"</p>
+                <div class="testimonial-author">Vinzzchy,</div>
+                <div class="author-role">Owner Server Game</div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Jasa Run SC-nya cuma 2rb per order, murah banget! Meskipun no refund tapi jarang banget ada error. Recommended buat yang mau hemat!"</p>
+                <div class="testimonial-author">Vinz Scripter</div>
+                <div class="author-role">Professional Coder</div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">"NOKOS Indo-nya mantap! Cuma 4.5k udah dapet versi terbaru yang stabil banget. Buat yang butuh NOKOS luar negara juga ada, harganya 10rb worth it banget!"</p>
+                <div class="testimonial-author">Sarah Developer</div>
+                <div class="author-role">Software Engineer</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="contact-title">HUBUNGI ADMIN</h2>
+            <div class="contact-info">
+                <div class="contact-method">
+                    <div class="contact-label">WHATSAPP</div>
+                    <div class="contact-value">+62 831-7856-5248</div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-label">TELEGRAM</div>
+                    <div class="contact-value">@Sevenloww808</div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-label">EMAIL</div>
+                    <div class="contact-value">aginurzaman818@gmail.com</div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-label">JAM OPERASIONAL</div>
+                    <div class="contact-value">7 Jam • 7 Hari Seminggu</div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://wa.me/6283178565248" class="social-link" target="_blank">📱</a>
+                    <a href="#" class="social-link" target="_blank">💬</a>
+                    <a href="#" class="social-link" target="_blank">📧</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">VINZ STORE</div>
+            <p class="footer-text">Panel Pterodactyl • NOKOS APK Bug • Jasa Run SC</p>
+            <p class="footer-text">Solusi terbaik untuk kebutuhan gaming dan development Anda</p>
+            <p class="copyright">&copy; 2026 VINZ STORE. All Rights Reserved. Created with ❤️ for Indonesian Gamers & Developers</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements
+            document.querySelectorAll('.product-card, .feature-card, .testimonial-card').forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(50px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(el);
+            });
+            
+            // Add to cart animation
+            document.querySelectorAll('.buy-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.innerHTML = '✓ BERHASIL!';
+                    this.style.background = 'linear-gradient(135deg, #00ff00, #00cc00)';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = 'BUY CHAT VINZ YAWW';
+                        this.style.background = 'linear-gradient(135deg, #ff0066, #ff6600)';
+                    }, 2000);
+                });
+            });
+            
+            // Create floating particles
+            function createParticles() {
+                const particlesContainer = document.createElement('div');
+                particlesContainer.className = 'particles';
+                document.body.appendChild(particlesContainer);
+                
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 15 + 's';
+                    particle.style.animationDuration = (10 + Math.random() * 20) + 's';
+                    particle.style.opacity = Math.random() * 0.5 + 0.3;
+                    
+                    // Random colors
+                    const colors = ['#ff0066', '#ff6600', '#ffff00', '#00ffcc', '#0066ff'];
+                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    particlesContainer.appendChild(particle);
+                }
+            }
+            
+            // Initialize particles
+            createParticles();
+            
+            // Hover effects for product cards
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-20px) scale(1.05) rotate(3deg)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1) rotate(0)';
+                });
+            });
+            
+            // Feature cards hover effect
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-20px) scale(1.05) rotate(-3deg)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1) rotate(0)';
+                });
+            });
+            
+            // Testimonial cards hover effect
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-20px) scale(1.05)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Social links hover effect
+            document.querySelectorAll('.social-link').forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-20px) scale(1.2) rotate(360deg)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1) rotate(0)';
+                });
+            });
+            
+            // CTA buttons hover effect
+            document.querySelectorAll('.cta-btn').forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.1) rotate(2deg)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1) rotate(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
